@@ -76,11 +76,10 @@ class LinkedList:
             # list of length 2+
             else:
                 second_last = self.head
-                prev = second_last
-                while second_last.get_next_node() is not None:
-                    prev = second_last
+                while second_last.get_next_node() != self.tail:
                     second_last = second_last.get_next_node()
-                self.tail = prev
+                second_last.set_next_node(None)
+                self.tail = second_last
             return ret_value
 
     def contains(self, value):
@@ -96,10 +95,14 @@ class LinkedList:
     def get_max(self):
         ptr1 = self.head
         l = []
-        # while loop
-        while ptr1 is not None:
-            # keep track of the biggest value as you iterate
-            l.append(ptr1.get_value())
-            ptr1 = ptr1.get_next_node()
-        # return biggest value
-        return max(l), l
+        if ptr1 is None:
+            return None
+        else:
+            # while loop
+            while ptr1 != self.tail:
+                # keep track of the biggest value as you iterate
+                l.append(ptr1.get_value())
+                ptr1 = ptr1.get_next_node()
+            l.append(self.tail.get_value())
+            # return biggest value
+            return max(l)

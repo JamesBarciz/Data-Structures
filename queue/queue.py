@@ -13,24 +13,62 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return self.size
+
+#     def enqueue(self, value):
+#         '''Add a new value to the queue'''
+#         self.storage.append(value)
+#         self.size += 1
+
+#     def dequeue(self):
+#         '''Remove first value from queue'''
+#         if self.size == 0:
+#             return None
+#         else:
+#             last_val = self.storage[0]
+#             self.storage.pop(0)
+#             self.size -= 1
+#             return last_val
+
+
+import unittest
+import os
+import sys
+import inspect
+
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir)
+
+
+from singly_linked_list.singly_linked_list import LinkedList
+
+
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
-    
+        self.storage = LinkedList()
+
     def __len__(self):
         return self.size
 
     def enqueue(self, value):
         '''Add a new value to the queue'''
-        self.storage.append(value)
+        '''Head of linked list'''
+        self.storage.add_to_head(value)
         self.size += 1
 
     def dequeue(self):
-        if self.size == 0:
-            return None
-        else:
-            last_val = self.storage[0]
-            self.storage.pop(0)
-            self.size -= 1
-            return last_val
+        '''Remove first value from queue'''
+        '''Tail of linked list'''
+        self.size -= 1
+        if self.size < 0:
+            self.size = 0
+        return self.storage.remove_tail()
