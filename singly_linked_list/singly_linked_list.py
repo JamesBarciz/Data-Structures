@@ -63,21 +63,25 @@ class LinkedList:
 
     def remove_tail(self):
         # empty list
-        if self.head is None:
+        if self.tail is None:
+            self.head = None
             return None
         else:
             # fmr tail value
             ret_value = self.tail.get_value()
             # list of length 1
-            if self.head.get_next_node() is None:
+            if self.head == self.tail:
                 self.head = None
-                return None
+                self.tail = None
             # list of length 2+
-            second_last = self.head
-            while second_last.get_next_node() is not None:
-                second_last = second_last.get_next_node()
+            else:
+                second_last = self.head
+                prev = second_last
+                while second_last.get_next_node() is not None:
+                    prev = second_last
+                    second_last = second_last.get_next_node()
+                self.tail = prev
             return ret_value
-
 
     def contains(self, value):
         # loop through LL until next pointer is None
