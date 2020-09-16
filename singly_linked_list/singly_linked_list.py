@@ -94,7 +94,12 @@ class LinkedList:
         return False
 
     def get_max(self):
+        ptr1 = self.head
+        l = []
         # while loop
-        # keep track of the biggest value as you iterate
+        while ptr1 is not None:
+            # keep track of the biggest value as you iterate
+            l.append(ptr1.get_value())
+            ptr1 = ptr1.get_next_node()
         # return biggest value
-        pass
+        return max(l)
