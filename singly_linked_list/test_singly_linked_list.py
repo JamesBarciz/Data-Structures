@@ -32,7 +32,7 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(self.list.remove_tail(), 30)
 
         self.list.add_to_tail(100)    
-        self.assertEqual(self.list.remove_tail(), 100)    
+        self.assertEqual(self.list.remove_tail(), 100)
         self.assertIsNone(self.list.head)
         self.assertIsNone(self.list.tail)
         self.assertIsNone(self.list.remove_tail())
