@@ -90,6 +90,7 @@ class LinkedList:
             # if we find 'value'
             if cur_node.get_value() == value:
                 return True
+            cur_node = cur_node.get_next_node()
         return False
 
     def get_max(self):
