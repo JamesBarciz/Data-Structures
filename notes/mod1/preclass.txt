@@ -1,0 +1,17 @@
+Runtime Complexity:
+
+    - What is it?
+
+    - What's the point of it?
+        - Compare arbitraty algorithms, functions, pieces of code
+
+BigO Classifications: (input_size, #_operations)
+    - O(c) - Constant time
+    - O(log_n) - Logarithmic time
+        - # elements increases num operations is constant
+    - O(n) - Linear time
+        - # elements increases, # operations increase linearly
+    - O(n*log_n) - Log-linear time
+    - O(n^c) - Quadratic time
+    - O(c^n) - Exponential time
+    - O(n!) - Factorial time
