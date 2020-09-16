@@ -102,4 +102,4 @@ class LinkedList:
             l.append(ptr1.get_value())
             ptr1 = ptr1.get_next_node()
         # return biggest value
-        return max(l)
+        return max(l), l
