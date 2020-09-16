@@ -23,7 +23,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 
 #     def enqueue(self, value):
 #         '''Add a new value to the queue'''
-#         self.storage.append(value)
+#         self.storage.insert(0, value)
 #         self.size += 1
 
 #     def dequeue(self):
@@ -31,13 +31,12 @@ Stretch: What if you could only use instances of your Stack class to implement t
 #         if self.size == 0:
 #             return None
 #         else:
-#             last_val = self.storage[0]
-#             self.storage.pop(0)
+#             last_val = self.storage[-1]
+#             self.storage.pop()
 #             self.size -= 1
 #             return last_val
 
 
-import unittest
 import os
 import sys
 import inspect
