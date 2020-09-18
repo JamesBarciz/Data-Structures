@@ -97,7 +97,21 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        # empty list
+        if self.head is None:
+            return
+        else:
+            ret_value = self.tail.value
+            # 1 item
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                cur_node = self.tail
+                self.tail = self.tail.prev
+                cur_node.delete()
+            self.length -= 1
+            return ret_value
             
     """
     Removes the input node from its current spot in the 
@@ -155,4 +169,25 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        # empty list
+        if self.head is None:
+            return None
+        elif self.head == self.tail:
+            return self.head.value
+        else:
+            l = []
+            ptr = self.head
+            while ptr is not None:
+                l.append(ptr.value)
+                ptr = ptr.next
+            return max(l)
+            # ptr1 = self.head
+            # ptr2 = self.head.next
+            # while not None:
+            #     if ptr1.value > ptr2.value:
+            #         ptr2 = ptr2.next
+            #     elif ptr1.value < ptr2.value:
+            #         ptr1 = ptr1.next
+            #     else:
+            #         ptr1 = ptr2.next
+            # return (ptr1.value, ptr2.value)
