@@ -16,11 +16,9 @@ Answer the following questions for each of the data structures you implemented a
     
 5. What is the runtime complexity of `len` using a list?
     - Constant
-    - Linear to count up or down
 
 6. What is the runtime complexity of `len` using a linked list?
     - Constant
-    - Linear to count up or down
 
 ## Queue
 
