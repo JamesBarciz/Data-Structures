@@ -61,26 +61,49 @@ class LinkedList:
         return ret_value
 
 
-    def remove_tail(self):
+    # def remove_tail(self):                Done outside of class
+    #     # empty list
+    #     if self.tail is None:
+    #         self.head = None
+    #         return None
+    #     else:
+    #         # fmr tail value
+    #         ret_value = self.tail.get_value()
+    #         # list of length 1
+    #         if self.head == self.tail:
+    #             self.head = None
+    #             self.tail = None
+    #         # list of length 2+
+    #         else:
+    #             second_last = self.head
+    #             while second_last.get_next_node() != self.tail:
+    #                 second_last = second_last.get_next_node()
+    #             second_last.set_next_node(None)
+    #             self.tail = second_last
+    #         return ret_value
+    
+    def remove_tail(self):                 # Done in class
         # empty list
-        if self.tail is None:
-            self.head = None
+        # return None
+        if self.head is None:
             return None
+
+        ret_value = self.tail.get_value()
+        # list with 1 element?
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        
+        # list with 2+ elements
         else:
-            # fmr tail value
-            ret_value = self.tail.get_value()
-            # list of length 1
-            if self.head == self.tail:
-                self.head = None
-                self.tail = None
-            # list of length 2+
-            else:
-                second_last = self.head
-                while second_last.get_next_node() != self.tail:
-                    second_last = second_last.get_next_node()
-                second_last.set_next_node(None)
-                self.tail = second_last
-            return ret_value
+            # temp node
+            cur_node = self.head
+            while cur_node.get_next_node() != self.tail:
+                cur_node = cur_node.get_next_node()
+            # update pointer of temp node(prev_tail) to None
+            cur_node.set_next_node(None)
+            self.tail = cur_node
+        return ret_value
 
     def contains(self, value):
         # loop through LL until next pointer is None
