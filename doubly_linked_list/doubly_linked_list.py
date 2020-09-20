@@ -175,19 +175,9 @@ class DoublyLinkedList:
         elif self.head == self.tail:
             return self.head.value
         else:
-            l = []
             ptr = self.head
-            while ptr is not None:
-                l.append(ptr.value)
+            ptr_val = ptr.value
+            while ptr.next is not None:
+                ptr_val = max(ptr_val, ptr.next.value)
                 ptr = ptr.next
-            return max(l)
-            # ptr1 = self.head
-            # ptr2 = self.head.next
-            # while not None:
-            #     if ptr1.value > ptr2.value:
-            #         ptr2 = ptr2.next
-            #     elif ptr1.value < ptr2.value:
-            #         ptr1 = ptr1.next
-            #     else:
-            #         ptr1 = ptr2.next
-            # return (ptr1.value, ptr2.value)
+            return ptr_val
