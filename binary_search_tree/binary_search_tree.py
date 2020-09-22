@@ -17,19 +17,80 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # RECURSIVE
+        if self.value is not None:
+            if value < self.value:
+                # if left child is None:
+                if self.left is None:
+                    self.left = BSTNode(value)  # add here
+                else:
+                    self.left.insert(value)  # recursive call
+            elif value >= self.value:
+                # if right child is None:
+                if self.right is None:
+                    self.right = BSTNode(value)  # add here
+                else:
+                    self.right.insert(value)  # recursive call
+        else:
+            self.value = value
+        # ITERATIVE
+        # while not at bottom level of tree
+            # if value < root
+                # if left child is None
+                    # add here
+                    # exit loop
+            # if value >= root
+                # if right child is None
+                    # add here
+                    # exit loop
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        elif target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        elif target > self.value:
+            if self.right is None:
+                return False            
+            else:
+                return self.right.contains(target)
+
+        # # check if self.value is target
+        # if target == self.value:
+        #     # if yes, return true
+        #     return True
+        # elif self.value is None:
+        #     return False
+        # else: # if no
+        #     # go left?
+        #     if target < self.value:
+        #         self.left.contains(target)
+        #     # go right?
+        #     elif target >= self.value:
+        #         self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # go right until you cannot anymore
+        # recursive / iterative
+        if self.right is None:
+            return self.value
+        else:
+            ptr = self.right
+            while ptr.right is not None:
+                ptr = ptr.right
+            # return value at far right
+            return ptr.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # one side then the other
+        # fn(value)
         pass
 
     # Part 2 -----------------------
@@ -63,23 +124,23 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+# bst = BSTNode(1)
 
-bst.insert(8)
-bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
+# bst.insert(8)
+# bst.insert(5)
+# bst.insert(7)
+# bst.insert(6)
+# bst.insert(3)
+# bst.insert(4)
+# bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+# bst.bft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  
