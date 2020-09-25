@@ -33,6 +33,7 @@ class BSTNode:
                     self.right.insert(value)  # recursive call
         else:
             self.value = value
+
         # ITERATIVE
         # while not at bottom level of tree
             # if value < root
@@ -89,26 +90,77 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        # one side then the other
-        # fn(value)
-        pass
+        # one side then the other - fn(value)
+
+        # Recursive
+        fn(self.value)
+        if self.left is not None:
+            self.left.for_each(fn)
+        if self.right is not None:
+            self.right.for_each(fn)
+        
+        # Iterative
+        # arr = [self]
+        # while len(arr) > 0:
+        #     node = arr.pop()
+        #     fn(node.value)
+        #     if node.left is not None:
+        #         arr.append(node.left)
+        #     if node.right is not None:
+        #         arr.append(node.right)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        # Recursive: place print statement in between
+        # recursive calls that explore left and right subtrees
+        if self.left is not None:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right is not None:
+            self.right.in_order_print()
+        # OR
+        # Iterative - think about the order in which we are
+        # adding nodes to the stack
+        # stack = []
+        # while len(stack) >= 0:
+        #     node = self
+        #     if node.right is not None:
+        #         stack.append(node.right)
+        #     stack.append(node)
+        #     if node.left is not None:
+        #         stack.append(node.left)
+        # return stack
+            
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # create a QUEUE to keep track of nodes we are procesing
+        # add 'self' to front of queue
+        arr = [self]
+        while len(arr) > 0:
+            node = arr.pop()
+            print(node.value)
+            if node.left is not None:
+                arr.insert(0, node.left)
+            if node.right is not None:
+                arr.insert(0, node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        arr = [self]
+        while len(arr) > 0:
+            node = arr.pop()
+            print(node.value)
+            if node.left is not None:
+                arr.append(node.left)
+            if node.right is not None:
+                arr.append(node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -124,18 +176,18 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BSTNode(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
+bst.bft_print()
+bst.dft_print()
 
 # print("elegant methods")
 # print("pre order")
